@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>03 노드 생성과 추가</h1>
+    <pre>
+        Document.prototype.createElement(tagName) : 인수로
+        전달받은 태그 이름에 해등하는 요소 노드를 생성하여 반환
+
+        Document.prototype.createTextNode(text) : 인수로 전달받은
+        텍스트 값으로 텍스트 노드를 생성하여 반환
+
+        Node.prototype.appendChild(childNode) : 인수로 전달받은 노드를 appendChild
+        메서드를 호출한 노드의 마지막 자식 노드로 추가
+    </pre>
+    <ul id="drink">
+        <li>커피</li>
+    </ul>
+    <script>
+        const $drink = document.getElementById('drink');
+
+        const $li = document.createElement('li');
+        // document에다 li 라는 엘리먼트를 만듬
+
+        $li.textContent = "콜라";
+        // li 항목에 콜라 라는 텍스트 삽입
+
+        $drink.appendChild($li);
+        // drink 영역에 자식으로 넣겠다
+        // script 가 먼저 실행이기 때문에 ul>li 항목을 script 밑에 있으면 실행이 안된다 script가 가져올 자료가 없으므로 위에
+        // but function 코드를 쓰면 script 실행시점을 조절할 수 있으므로 function test(){}코드시 script 보다 밑에 와도 실행
+    </script>
+
+    <h3>복수의 노드 생성과 추가</h3>
+    <ul id="food">
+        <li>김치찌개</li>
+    </ul>
+    <script>
+        const $food = document.getElementById("food");
+
+        const $fragment = document.createDocumentFragment();
+        ["된장찌개", "고등어구이", "순대국"].forEach(menu =>{
+            const $li = document.createElement("li");
+            $li.textContent = menu;
+            $fragment.appendChild($li);
+        });
+        // fragment= 가상의 묶음, 임시로 묶어 놓은것
+        // 가상 돔을 형성 ()공백에 놔둠   [된장찌개, 고등어~] 배열을 만듬 이후 반복작업
+        // ※참고  funtion test(){} 함수 선언 test() 함수 호출
+
+        $food.appendChild($fragment);
+        // 브라우저가 이 시점에서 렌더링 
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>03 형제 노드</h1>
+    <ol id="node">
+        <li>
+            Node.prototype.previousSibling: 
+            형제 노드 중 자신의 이전 형제 노드(요소 노드, 텍스트 노드)를 탐색하여 반환
+        </li>
+        <li>
+            Node.prototype.nextSibling : 
+            형제 노드 중 자신의 다음 형제 노드(요소 노드, 텍스트 노드)를 탐색하여 반환
+        </li>
+    </ol>
+    <script>
+        const $node = document.getElementById("node");
+
+        const {firstChild} = $node;
+        console.log(firstChild);
+        // $node(박스)가 가진 요소 속성들 중에서 필요한 요소(firstChild-빨간펜)를 꺼내서 쓴다 박스에서 필요한 펜 꺼내 쓴다는 느낌? node가 가지고 있는것만 가증 구조분해-->
+
+        const {firstElementChild} = $node;
+        console.log(firstElementChild);
+
+        const {nextSibling} = firstChild;
+        console.log(nextSibling);
+        // firstChild의 다음 노드를 찾음 firstChild = 텍스트-> 그 다음것 엘리먼트(li)
+
+        const {previousSibling} = nextSibling;
+        console.log(previousSibling);
+        // nextSibling을(li) 기점으로 이전거 찾음=text
+
+        //let $test = document.getElementById("test");
+        //console.log($test.innerText);
+    </script>
+</body>
+</html>
